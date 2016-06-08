@@ -1,0 +1,20 @@
+{
+    "name": "cupoftea/php-sandbox",
+    "description": "PHP Sandbox",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CupOfTea696",
+            "email": "cupoftea696@gmail.com"
+        }
+    ],
+    "require": {
+        "cupoftea/package": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "CupOfTea\\PHPSandbox\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
