@@ -1,9 +1,31 @@
 <?php namespace CupOfTea\PHPSandbox;
 
+use CupOfTea\Package\Package;
 use InvalidArgumentException;
 
 class Sandbox implements SandboxInterface
 {
+    use Package;
+    
+    /**
+     * Package Name.
+     *
+     * @const string
+     */
+    const PACKAGE = 'CupOfTea/PHP-Sandbox';
+    
+    /**
+     * Package Version.
+     *
+     * @const string
+     */
+    const VERSION = '0.0.0';
+    
+    /**
+     * The Sandbox bootstrap file.
+     *
+     * @var string
+     */
     protected $bootstrap;
     
     /**
