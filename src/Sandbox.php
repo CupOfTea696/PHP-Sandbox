@@ -29,6 +29,13 @@ class Sandbox implements SandboxInterface
     protected $bootstrap;
     
     /**
+     * The shell command to run the Sandbox.
+     * 
+     * @var \CupOfTea\PHPSandbox\Command\CommandInterface
+     */
+    private $cmd;
+    
+    /**
      * Create a new Sandbox instance.
      *
      * @param  string|null  $bootstrap
@@ -43,6 +50,19 @@ class Sandbox implements SandboxInterface
             
             $this->bootstrap = $bootstrap;
         }
+    }
+    
+    /**
+     * Execute a block of code in the Sandbox Environment.
+     *
+     * @param  closure  $code
+     * @return mixed
+     */
+    public function exec(closure $code)
+    {
+        $this->prepareEnvironment();
+        $this->bootstrap();
+        $this->boot();
     }
     
     /**
@@ -62,5 +82,11 @@ class Sandbox implements SandboxInterface
         if (is_dir($file)) {
             throw new InvalidArgumentException('The path ' . $file . ' is a directory.');
         }
+    }
+    
+    protected function prepareEnvironment()
+    {
+        $cmd = $this->resetCommand();
+        $cmd->setCommand('php');
     }
 }
