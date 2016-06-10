@@ -2,7 +2,7 @@
 
 use InvalidArgumentException;
 
-class State implements StateInterface
+class State extends BaseState
 {
     /**
      * Environment variables.

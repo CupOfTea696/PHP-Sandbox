@@ -29,11 +29,13 @@ class Sandbox implements SandboxInterface
     protected $bootstrap;
     
     /**
-     * The shell command to run the Sandbox.
+     * The process running the Sandbox.
      * 
-     * @var \CupOfTea\PHPSandbox\Command\CommandInterface
+     * @var \CupOfTea\PHPSandbox\Command\Process
      */
-    private $cmd;
+    private $process;
+    
+    private $environment;
     
     /**
      * Create a new Sandbox instance.
@@ -53,16 +55,123 @@ class Sandbox implements SandboxInterface
     }
     
     /**
-     * Execute a block of code in the Sandbox Environment.
-     *
-     * @param  closure  $code
-     * @return mixed
+     * {@inheritdoc}
      */
     public function exec(closure $code)
     {
-        $this->prepareEnvironment();
-        $this->bootstrap();
-        $this->boot();
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function run($script)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getEnv($name)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setEnv($name, $value)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefinition($name)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function define($name, $value)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function defined($name)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function defineIfNotDefined($name, $value)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function saveState()
+    {
+        return $this->environment->save();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function restoreState(StateInterface $state)
+    {
+        $this->environment->restore($state);
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function __get($variable)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function __set($variable, $value = null)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function __isset($variable)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function __unset($variable)
+    {
+        
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function __call($method, $args = [])
+    {
+        
     }
     
     /**
@@ -82,11 +191,5 @@ class Sandbox implements SandboxInterface
         if (is_dir($file)) {
             throw new InvalidArgumentException('The path ' . $file . ' is a directory.');
         }
-    }
-    
-    protected function prepareEnvironment()
-    {
-        $cmd = $this->resetCommand();
-        $cmd->setCommand('php');
     }
 }

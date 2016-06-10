@@ -1,6 +1,6 @@
 <?php namespace CupOfTea\PHPSandbox\State;
 
-class NullState implements StateInterface
+class NullState extends AbstractState
 {
     /**
      * {@inheritdoc}
